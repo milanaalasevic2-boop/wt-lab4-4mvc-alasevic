@@ -1,0 +1,61 @@
+@model wt_lab4_4mvc_alasevic.Models.Product
+
+@{
+    ViewData["Title"] = "Редактирование товара";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+            <div class="card shadow-sm rounded-4 border-0">
+                <div class="card-body p-4">
+
+                    <h2 class="fw-bold mb-4">
+                        Редактирование товара #@Model.Id
+                    </h2>
+
+                    <form asp-action="Edit" method="post">
+
+                        <input asp-for="Id" type="hidden" />
+
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold">Название</label>
+                            <input asp-for="Name" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Category" class="form-label fw-semibold">Категория</label>
+                            <input asp-for="Category" class="form-control" />
+                            <span asp-validation-for="Category" class="text-danger small"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Price" class="form-label fw-semibold">Цена, ₽</label>
+                            <input asp-for="Price" class="form-control" type="number" step="0.01" min="0" />
+                            <span asp-validation-for="Price" class="text-danger small"></span>
+                        </div>
+
+                        <div class="form-check mb-4">
+                            <input asp-for="IsAvailable" class="form-check-input" />
+                            <label asp-for="IsAvailable" class="form-check-label">
+                                Доступен в наличии
+                            </label>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary px-4">Сохранить</button>
+                        <a asp-action="Index" class="btn btn-secondary">Назад</a>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

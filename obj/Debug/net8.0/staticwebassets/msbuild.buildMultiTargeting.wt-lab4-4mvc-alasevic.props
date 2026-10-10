@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\wt-lab4-4mvc-alasevic.props" />
+</Project>

@@ -1,0 +1,37 @@
+@model wt_lab4_4mvc_alasevic.Models.Product
+
+@{
+    ViewData["Title"] = "Товар";
+}
+
+<h1>Товар</h1>
+
+<dl class="row">
+    <dt class="col-sm-3">ID</dt>
+    <dd class="col-sm-9">@Model.Id</dd>
+
+    <dt class="col-sm-3">Название</dt>
+    <dd class="col-sm-9">@Model.Name</dd>
+
+    <dt class="col-sm-3">Категория</dt>
+    <dd class="col-sm-9">@Model.Category</dd>
+
+    <dt class="col-sm-3">Цена</dt>
+    <dd class="col-sm-9">@Model.Price руб.</dd>
+
+    <dt class="col-sm-3">Доступен</dt>
+    <dd class="col-sm-9">@(Model.IsAvailable ? "да" : "нет")</dd>
+</dl>
+
+<div class="mt-4 d-flex gap-2">
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+        Редактировать
+    </a>
+
+    <form asp-action="Delete" asp-route-id="@Model.Id" method="post"
+          onsubmit="return confirm('Удалить товар «@Model.Name»?');">
+        <button type="submit" class="btn btn-danger">Удалить</button>
+    </form>
+
+    <a asp-action="Index" class="btn btn-secondary">← Назад к списку</a>
+</div>

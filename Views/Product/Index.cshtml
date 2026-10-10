@@ -1,0 +1,63 @@
+@model List<wt_lab4_4mvc_alasevic.Models.Product>
+
+@{
+    ViewData["Title"] = "Каталог товаров";
+}
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="fw-bold mb-1">Каталог товаров</h1>
+            <p class="text-muted mb-0">
+                Система управления товарами · всего: @Model.Count
+            </p>
+        </div>
+        <a asp-action="Create" class="btn btn-primary btn-lg shadow-sm">
+            + Добавить товар
+        </a>
+    </div>
+
+    <div class="row g-4">
+
+        @foreach (var product in Model)
+        {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm rounded-4 border-0">
+
+                    <div class="card-body d-flex flex-column">
+
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <span class="badge bg-secondary">ID: @product.Id</span>
+
+                            @if (product.IsAvailable)
+                            {
+                                <span class="badge bg-success">В наличии</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger">Нет в наличии</span>
+                            }
+                        </div>
+
+                        <h5 class="card-title fw-bold">@product.Name</h5>
+
+                        <p class="text-muted small mb-2">@product.Category</p>
+
+                        <p class="fs-4 fw-bold text-primary mt-auto mb-3">
+                            @product.Price.ToString("N0") ₽
+                        </p>
+
+                        <a asp-action="Details"
+                           asp-route-id="@product.Id"
+                           class="btn btn-outline-primary stretched-link">
+                            Подробнее
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

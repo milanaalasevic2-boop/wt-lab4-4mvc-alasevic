@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\wt-lab4-4mvc-alasevic.props" />
+</Project>
